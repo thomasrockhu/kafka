@@ -1,14 +1,15 @@
 version: 2.1
 jobs:
-  steps:
-    - checkout
-    - run:
-        name: Collect coverage
-        command: ./gradlew reportCoverage
-    - run:
-        name: Upload coverage reports to Codecov
-        command: |
-          bash <(curl -s https://codecov.io/bash)
+  build:
+    steps:
+      - checkout
+      - run:
+          name: Collect coverage
+          command: ./gradlew reportCoverage
+      - run:
+          name: Upload coverage reports to Codecov
+          command: |
+            bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2.1
